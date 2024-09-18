@@ -1,17 +1,12 @@
-import { ReactNode } from 'react';
-import Card from '../components/card/card';
 import Header from '../components/header/header';
+import OffersList from '../components/offers-list/offers-list';
+import { Offer } from '../mocks/offers';
 
 type MainPageProps = {
-  offersCount: number;
+  offers: Offer[];
 };
 
-export default function MainPage({ offersCount }: MainPageProps): JSX.Element {
-  const elements: ReactNode[] = [];
-
-  for (let i = 0; i < offersCount; i++) {
-    elements.push(<Card />);
-  }
+export default function MainPage({ offers }: MainPageProps): JSX.Element {
 
   return (
     <div className="page page--gray page--main">
@@ -86,9 +81,7 @@ export default function MainPage({ offersCount }: MainPageProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {elements}
-              </div>
+              <OffersList className={'cities__places-list tabs__content'} offers={offers} offerClassName={'cities'}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
